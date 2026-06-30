@@ -22,8 +22,8 @@ export default function LeaderboardRow({ user, rank, isCurrentUser = false }) {
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: rank * 0.07 }}
       style={{
-        display: 'flex', alignItems: 'center', gap: '16px',
-        padding: '16px 20px',
+        display: 'flex', alignItems: 'center', gap: 'clamp(10px, 2vw, 16px)',
+        padding: 'clamp(12px, 2vw, 16px) clamp(14px, 2vw, 20px)',
         background: isCurrentUser
           ? 'linear-gradient(135deg, rgba(99,102,241,0.1), rgba(99,102,241,0.05))'
           : rank <= 3 ? 'rgba(255,255,255,0.02)' : 'transparent',
@@ -87,21 +87,25 @@ export default function LeaderboardRow({ user, rank, isCurrentUser = false }) {
         </div>
         {/* Badges */}
         <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
-          {badges.slice(0, 4).map((badge) => {
+          {badges.slice(0, 2).map((badge) => {
             const cfg = BADGE_CONFIG[badge]
             return cfg ? (
               <span key={badge} title={cfg.desc} style={{
-                fontSize: '0.7rem', padding: '2px 8px',
-                background: `${cfg.color}20`,
-                border: `1px solid ${cfg.color}40`,
+                fontSize: '0.68rem', padding: '2px 7px',
+                background: `${cfg.color}18`,
+                border: `1px solid ${cfg.color}38`,
                 borderRadius: 'var(--radius-full)',
                 color: cfg.color,
                 cursor: 'help',
+                whiteSpace: 'nowrap',
               }}>
                 {cfg.icon} {badge}
               </span>
             ) : null
           })}
+          {badges.length > 2 && (
+            <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)', padding: '2px 7px', background: 'var(--bg-elevated)', borderRadius: 'var(--radius-full)' }}>+{badges.length - 2}</span>
+          )}
           {badges.length === 0 && (
             <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>No badges yet</span>
           )}
@@ -109,24 +113,24 @@ export default function LeaderboardRow({ user, rank, isCurrentUser = false }) {
       </div>
 
       {/* Stats */}
-      <div style={{ display: 'flex', gap: '16px', flexShrink: 0 }}>
-        <div style={{ textAlign: 'center' }}>
+      <div style={{ display: 'flex', gap: 'clamp(10px, 2vw, 16px)', flexShrink: 0, alignItems: 'center' }}>
+        <div style={{ textAlign: 'center' }} className="hide-mobile">
           <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '2px' }}>Reports</div>
-          <div style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)' }}>{user.reports_count}</div>
+          <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>{user.reports_count}</div>
         </div>
-        <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: 'center' }} className="hide-mobile">
           <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '2px' }}>Verified</div>
-          <div style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)' }}>{user.verifications_count}</div>
+          <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>{user.verifications_count}</div>
         </div>
-        <div style={{ textAlign: 'center', minWidth: '60px' }}>
-          <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '2px' }}>Points</div>
+        <div style={{ textAlign: 'center', minWidth: '54px' }}>
+          <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', marginBottom: '2px' }}>Points</div>
           <div style={{
-            fontWeight: 800, fontSize: '1rem',
+            fontWeight: 800, fontSize: 'clamp(0.85rem, 2vw, 1rem)',
             color: 'var(--color-warning-light)',
             fontFamily: 'var(--font-display)',
+            display: 'flex', alignItems: 'center', gap: '2px',
           }}>
-            <Zap size={11} style={{ display: 'inline', marginRight: '2px' }} />
-            {user.points}
+            <Zap size={10} />{user.points}
           </div>
         </div>
       </div>

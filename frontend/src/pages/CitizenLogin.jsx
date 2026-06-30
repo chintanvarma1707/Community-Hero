@@ -93,7 +93,7 @@ export default function CitizenLogin() {
       </div>
 
       {/* Right - Form Panel */}
-      <div style={{ width: '480px', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '60px 48px', background: 'var(--bg-surface)', overflow: 'auto' }} className="login-right-panel">
+      <div style={{ width: '480px', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 'clamp(32px, 6vw, 60px) clamp(24px, 5vw, 48px)', background: 'var(--bg-surface)', overflow: 'auto', maxHeight: '100vh' }} className="login-right-panel">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           <h2 style={{ fontSize: '1.8rem', fontWeight: 900, marginBottom: '8px', letterSpacing: '-0.02em' }}>
             {isLogin ? 'Welcome back' : 'Create your account'}
@@ -163,7 +163,10 @@ export default function CitizenLogin() {
       <style>{`
         @media (max-width: 900px) {
           .login-left-panel { display: none !important; }
-          .login-right-panel { width: 100% !important; }
+          .login-right-panel { width: 100% !important; min-height: 100vh; }
+        }
+        @media (max-width: 480px) {
+          .login-right-panel { padding: 24px 20px !important; justify-content: flex-start !important; padding-top: calc(var(--navbar-height) + 24px) !important; }
         }
       `}</style>
     </div>

@@ -93,21 +93,21 @@ export default function AccountSettings() {
 
   return (
     <div className="page-wrapper">
-      <div className="container" style={{ maxWidth: '1000px', paddingTop: '40px', paddingBottom: '80px' }}>
+      <div className="container" style={{ maxWidth: '1000px', paddingTop: 'clamp(20px, 4vw, 40px)', paddingBottom: '80px' }}>
         
         {/* ---- HERO PROFILE HEADER ---- */}
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
           style={{
             position: 'relative', overflow: 'hidden',
-            padding: '40px', marginBottom: '32px',
+            padding: 'clamp(20px, 4vw, 40px)', marginBottom: 'clamp(16px, 3vw, 32px)',
             background: 'linear-gradient(135deg, rgba(99,102,241,0.12) 0%, rgba(16,185,129,0.05) 100%)',
             border: '1px solid var(--border-primary)',
             borderRadius: 'var(--radius-xl)',
             boxShadow: '0 10px 40px rgba(0,0,0,0.2)',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '28px', flexWrap: 'wrap', position: 'relative', zIndex: 1 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(16px, 3vw, 28px)', flexWrap: 'wrap', position: 'relative', zIndex: 1 }}>
             {/* Avatar Badge */}
             <div style={{
               width: 96, height: 96,
@@ -123,7 +123,7 @@ export default function AccountSettings() {
             {/* User Info */}
             <div style={{ flex: 1, minWidth: '260px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-                <h1 style={{ fontSize: '2.2rem', fontWeight: 900, fontFamily: 'var(--font-display)', margin: 0 }}>
+                <h1 style={{ fontSize: 'clamp(1.4rem, 3vw, 2.2rem)', fontWeight: 900, fontFamily: 'var(--font-display)', margin: 0 }}>
                   {user.name}
                 </h1>
                 <span style={{
@@ -164,7 +164,7 @@ export default function AccountSettings() {
         </motion.div>
 
         {/* ---- METRICS GRID ---- */}
-        <div className="grid-4" style={{ marginBottom: '36px' }}>
+        <div className="grid-4" style={{ marginBottom: 'clamp(20px, 4vw, 36px)' }}>
           <div className="card" style={{ padding: '24px', textAlign: 'center', border: '1px solid var(--border-subtle)' }}>
             <div style={{ fontSize: '2rem', marginBottom: '12px' }}>📋</div>
             <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'var(--font-display)' }}>
@@ -200,8 +200,9 @@ export default function AccountSettings() {
 
         {/* ---- TABS NAVIGATION ---- */}
         <div style={{
-          display: 'flex', gap: '12px', borderBottom: '1px solid var(--border-subtle)',
-          marginBottom: '32px', paddingBottom: '16px', justifyContent: 'space-between', alignItems: 'center',
+          display: 'flex', gap: '10px', borderBottom: '1px solid var(--border-subtle)',
+          marginBottom: 'clamp(20px, 4vw, 32px)', paddingBottom: '14px',
+          justifyContent: 'space-between', alignItems: 'center',
           flexWrap: 'wrap'
         }}>
           <div style={{ display: 'flex', gap: '12px' }}>
@@ -326,7 +327,7 @@ export default function AccountSettings() {
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
             <div style={{
               background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)',
-              borderRadius: 'var(--radius-xl)', padding: '40px'
+              borderRadius: 'var(--radius-xl)', padding: 'clamp(20px, 4vw, 40px)'
             }}>
               <h2 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px' }}>
                 ⚙️ Full Account Settings & Profile Edit

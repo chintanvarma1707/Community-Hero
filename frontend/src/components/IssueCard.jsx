@@ -34,12 +34,15 @@ export default function IssueCard({ issue, onClose }) {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 20, scale: 0.95 }}
       style={{
-        background: 'var(--bg-surface)',
+        background: 'rgba(15, 26, 46, 0.95)',
         border: '1px solid var(--border-medium)',
         borderRadius: 'var(--radius-lg)',
         overflow: 'hidden',
-        width: '320px',
-        boxShadow: 'var(--shadow-lg)',
+        width: '100%',
+        maxWidth: '380px',
+        boxShadow: 'var(--shadow-xl)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
       }}
     >
       {/* Image */}
